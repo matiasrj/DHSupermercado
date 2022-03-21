@@ -23,7 +23,7 @@ const { isUserLoggedMiddleware } = require('./middlewares/isUserLoggedMiddleware
 const app = express();
 
 // PORT
-const port= 3001;
+const port=process.env.PORT || 3001;
 
 
 // Ejs
