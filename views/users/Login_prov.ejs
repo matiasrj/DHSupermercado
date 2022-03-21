@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- font awesone -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+
+        <!-- Google font (Roboto) -->
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    
+        <!-- CSS -->
+        <link rel="stylesheet" href="/css/styles.css">
+        <link rel="stylesheet" href="/css/styles_Login_prov.css">
+
+    <title>Login</title>
+</head
+>
+<body>
+    <header>
+        <!-- Navbar -->
+        <%- include('../partials/navbar')%>
+    
+    </header>
+   
+    <main>
+        <div class="title-form">
+            <p>  Login</p>    
+        </div>
+        <% if (errors) { %>
+            <p> Hubo errores al loguearse.</p> 
+            <% for (error in errors)  { %>
+                <p>   <%- errors[error].msg %></p> 
+            <%}%>
+        <%}%>
+
+
+        <form action="./login" method="POST">
+            <fieldset> 
+                <legend>Nombre</legend> 
+                <p class = "email-help"> Ingrese mail valido. Por ej : pepito@gmail.com</p>
+                <div class="field-container">
+                    <i class="fas fa-user">   </i>
+                    <input type="email" name="email" id="email" placeholder=""> 
+                    
+                
+              </div>
+               
+            </fieldset>
+
+            <fieldset>
+                <legend>Contraseña</legend> 
+                <p class = "password-help"> Minimo 8 caracteres</p>
+                <div class="field-container">
+                    <i class="fas fa-lock">   </i>
+                    <input type="password" name="password" id="password" placeholder="">
+                </div>
+            </fieldset>
+
+            <div class="field-container">
+                <input type="checkbox" name="recordarUsuario" id="recordar_usuario" >Recodar Usuario
+            </div>
+
+
+            <input type="submit" value="Ingresar">
+            
+            <div class="links-options">
+            <a href="./register">Registrarse</a>
+            <a href="#">Olvidó su contraseña?</a>
+            </div>
+        </form>
+
+    </main>
+
+    <!-- Footer -->
+    <%- include('../partials/footer') %>
+
+
+</body>
+
+<!-- Scripts -->
+<script type="module" src="/js/base.js"></script>
+<!-- Validaciones -->
+<script src="https://unpkg.com/validator@latest/validator.min.js"></script>
+<script>
+
+    
+    let inputs = document.querySelectorAll('input')
+
+    for (let input of inputs) {
+        input.addEventListener('input',validar)
+}
+
+function validar (e){
+    if (e.srcElement.id === 'email'){ validarEmail(e)}
+    if (e.srcElement.id === 'password'){ validarPassword(e)}
+
+}
+
+function validarEmail(e){
+    let emailHelp = document.querySelector('.email-help')
+    
+    if (validator.isEmail(e.srcElement.value) && !validator.isEmpty(e.srcElement.value))
+    {
+        emailHelp.style.visibility = 'hidden'
+        e.target.setCustomValidity('');
+    }
+    else {
+        emailHelp.style.visibility = 'visible'
+        e.target.setCustomValidity('invalid');
+    }
+}
+    
+function validarPassword(e){
+    let passwordHelp = document.querySelector('.password-help')
+    
+    if (validator.isLength( e.srcElement.value, { min:8 }))
+    {
+        passwordHelp.style.visibility = 'hidden';
+        e.target.setCustomValidity('');
+    }
+    else {
+         
+            passwordHelp.style.visibility = 'visible';
+            e.target.setCustomValidity('invalid');
+        
+    }
+}
+// }
+
+
+
+</script>
+
+</html>

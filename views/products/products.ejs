@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- font awesone -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+
+    <!-- Google font (Roboto) -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/styles_Home.css">
+    <link rel="stylesheet" href="/css/styles_products.css">
+
+
+
+    <title>Productos</title>
+</head>
+<body>
+    <header>
+        <!-- Navbar -->
+        <%- include('../partials/navbar')%>
+    
+    </header>
+    
+    <main>       
+        <section class="carousel">
+                    
+        <div class="carousel-container">
+
+            <!-- imagen & texto -->
+            <div class="mySlides fade">
+                <div class="title-slide"> Oferta de la semana</div>
+                    <img src="/images/Bocina.png">
+                
+            </div>
+        
+            <div class="mySlides fade">
+                <div class="title-slide">Oportunidad</div>
+                     <img src="/images/Iphone.png" >
+              
+            </div>
+        
+            <div class="mySlides fade">
+                <div class="title-slide">Nuevos lanzamientos</div>
+                    <img src="/images/Laptop.png">
+                
+            </div>
+        
+        </div>
+        
+    </section>
+    
+
+        <% if(userLogged != null)  { %>
+        <% if(locals.isLogged && userLogged.admin == true) { %>
+            <div class="add-card">
+                <button class="add-card-btn"> 
+                    <a  class="add-link" href="./create">
+                    <i class="fas fa-plus"> </i>
+                    <p>Agregar Producto</p>
+                    </a>                
+                </button>
+            </div>
+            <% } %>
+        <% } %>   
+        <section class="products">
+
+ 
+            <% for (producto of productos ) { %>
+                <div class="product-card">
+                    
+                    <article>
+                        <!-- /images/Bocina.png -->
+
+                        <img src="/images/products/<%- producto.avatar %>" alt="imagen">
+                        <div class="body-card">
+                            <p class="title-card"><%-producto.name%>   </p>
+                            <p class="price-card"> u$s <%-producto.price%> </p>
+                        </div>
+                        <p class="desc-card"> <%-producto.description%></p>
+                    </article>
+                    <div class="add-card">
+                        <button class="add-card-btn"> 
+                            <a  class="add-link" href="./<%- producto.id %>">
+                            <i class="fas fa-plus"> </i>
+                            <p>Comprar</p>
+                            </a>                
+                        </button>
+
+                    </div>
+                </div>
+                
+            <% } %>
+            
+        </section>
+            
+    </main>
+
+
+    
+
+<!-- Footer -->
+<%- include('../partials/footer') %>
+    
+</body>
+
+<!-- Scripts -->
+<script type="module" src="/js/base.js"></script>
+<script type="module" src="/js/carousel-home.js"></script>
+
+</html>

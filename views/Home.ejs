@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- font awesone -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+
+    <!-- Google font (Roboto) -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="/css/styles.css">
+    
+    <!-- <link rel="stylesheet" href="/css/styles_products.css"> -->
+    <link rel="stylesheet" href="/css/styles_Home.css">
+
+    <title>Bienvenid@s</title>
+</head>
+<body>
+    <header>
+        <!-- Navbar -->
+        <%- include('partials/navbar')%>
+    
+    </header>
+
+    <main>
+        <section class="carousel">
+                    
+            <div class="carousel-container">
+
+                <!-- imagen & texto -->
+                <div class="mySlides fade">
+                    <div class="title-slide"> Oferta de la semana</div>
+                        <img src="/images/Bocina.png">
+                    
+                </div>
+            
+                <div class="mySlides fade">
+                    <div class="title-slide">Oportunidad</div>
+                         <img src="/images/Iphone.png" >
+                  
+                </div>
+            
+                <div class="mySlides fade">
+                    <div class="title-slide">Nuevos lanzamientos</div>
+                        <img src="/images/Laptop.png">
+                    
+                </div>
+            
+            </div>
+            
+        </section>
+        
+        <div class="section-separador">
+            <p class="text-separador"> 
+                <i class="fas fa-tag"></i>
+                Bienvenidos:)
+            </p>
+            <hr class="hr-section">
+        </div>
+
+        <section class="presentacion">
+            
+        <pre class="text-bienvenido">
+        Bienvenidos a SuperMarket. 
+
+        Aquí podrás encontrar las 
+            mejores ofertas 
+                y la mayor 
+        variedad de productos.
+
+    Te invitamos a conocernos...
+        </pre>
+            <a  class="add-link" href="/products/ %>">  
+            <button class="add-card-btn"> 
+                <i class="fas fa-list-alt"></i>
+                <p>Productos</p>
+                </a>                
+            </button>
+                
+
+        </section>
+
+    </main>
+    
+    <section class="newsletter">
+        <p><i class="far fa-smile-wink"></i>  Suscríbete a nuestras novedades:</p>
+
+        <form action="#" method="post" class="form-newsletter"> 
+            <label for="nombre-newsletter">Nombre:</label>
+            <input type="text" name="nombre-newsletter" id="nombre-newsletter">
+
+            <label for="email-newsletter">Email:</label>
+            <input type="email" name="email-newsletter" id="email-newsletter">
+        </form>
+
+
+    </section>
+
+
+<!-- Footer -->
+<%- include('partials/footer') %>
+    
+</body>
+
+
+<!-- Scripts -->
+<script type="module" src="/js/base.js"></script>
+<script type="module" src="/js/carousel-home.js"></script>
+<script src="https://unpkg.com/validator@latest/validator.min.js"></script>
+
+
+</html>

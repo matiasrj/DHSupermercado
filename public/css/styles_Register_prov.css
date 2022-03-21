@@ -1,0 +1,133 @@
+/* Variables */
+:root {
+    /* Colores */
+   
+    /* Dark Mode */
+    --menu-color: rgb(17, 238, 238);
+    --footer-color: rgb(55, 53, 51);
+    --modal-secondary-color: rgba(55, 53, 51, 0.85);
+    
+    --font-color--dark-gray: rgb(55, 53, 51);
+    --font-color--dark: rgba(55, 53, 51, 0.89);
+    --font-color--dark-destacado: rgb(17, 238, 238);
+
+    --GrisOscuro: #666;
+    --GrisClaro: #ebebeb;
+    --Verde: #39b54a;
+
+
+    --red-color: rgb(235, 34, 34);
+
+
+    /* Variables */
+    --menu-mobile-height : 15vh;
+  }
+
+
+/******************* header ************************/
+/******************* main **************************/
+main{
+    width: 90%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    }
+
+.title-form{
+    font-size: 2rem;
+    margin: 10px 0;
+    padding: 3px;
+}
+
+    form{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+
+fieldset{
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 5px;
+    border-radius: 5px;   
+}
+
+legend{
+    font-size: 1.5rem;
+    
+}
+
+.field-container{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+
+.field-container i{
+    font-size: 1.5rem;
+}
+
+input{
+    width: 100%;
+    padding: 5px; 
+    margin-left: 5px;
+    font-size: 1.5rem;
+    color: white;
+    background-color: transparent;
+    border-color: transparent;
+    border-radius: 5px;
+    border:none;
+    border-bottom : 1px solid var(--GrisOscuro);
+}
+
+input:invalid {
+    border: 2px solid red;
+    border-radius: 5px;
+  }
+
+input[type="submit"],input[type="reset"] {
+    border-radius: 10px;
+    background-color: var(--menu-color);
+    border-color: transparent;
+    color: var(--font-color--dark-gray);
+    margin-bottom: 20px;
+}
+
+.links-options{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    
+}
+
+.links-options a{
+    margin-top: 5px;
+    font-size: 1.2rem;
+    text-decoration: none;
+    color: var(--menu-color);
+}
+
+
+
+/******************* footer **************************/
+
+
+@media (min-width:600px){
+/******************* header ************************/
+/******************* main **************************/
+form{
+    width: 50%;
+}
+/******************* footer **************************/
+}
+
+
+@media (min-width:961px){
+/******************* header ************************/
+/******************* main **************************/
+/******************* footer **************************/
+}

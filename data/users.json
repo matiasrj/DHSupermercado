@@ -1,0 +1,11 @@
+[
+    {
+        "nombreApe": "nombre01",
+        "nombreUsuario": "User01",
+        "fechaNac": "10/12/1989",
+        "email": "matiasrj_89@hotmail.com",
+        "password": "$2a$10$aAHyEL6U3jIEfEzSqwi43u0X3JkQOkqS/BKE7cXQE56pR929bL5c6",
+        "avatar": "img_1641732090746.jpg",
+        "passwordtest": "matias"
+    }
+]

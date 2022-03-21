@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+      <!-- font awesone -->
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+
+      <!-- Google font (Roboto) -->
+      <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+  
+      <!-- CSS -->
+      <link rel="stylesheet" href="/css/styles.css">
+      <link rel="stylesheet" href="/css/styles_ProductDetail.css">
+      <link rel="stylesheet" href="/css/styles_products.css">
+  
+  
+  
+    <title>Detalles</title>
+</head>
+<body>
+    <header>
+       <!-- Navbar -->
+       <%- include('../partials/navbar')%>
+    
+    </header>
+
+    <main>
+        <section>
+            <button class="add-card-btn" ><a href="./"> <i class="fas fa-arrow-left"> </i></a></button>
+        </section>
+        
+        <section class="detail-container">
+            <article class="detail-card">
+
+                <h2  class="title-dc"> <%- producto.name %> </h2>
+                    <!-- Cambiar aqui por un carrousel posiblemente -->
+                <div class= "body-dc"> 
+
+                    <div class="img-body-dc">   
+                        <img src="/images/products/<%- producto.avatar %>" alt="producto" class="img-dc">        
+                    </div>
+
+                    <div class="content-body-dc">
+                        <div class="header-content-body-dc">
+                            <p class="header-content-body-dc-desc"> <%- producto.name %> </p>
+                            <p class="price-dc"> u$s <p class="price price-dc"><%- producto.price %></p></p>
+                        </div>
+
+                        
+                        <div class="quantity-container">
+                            <button class="quantity-plus" id="plus">  <i class="fas fa-plus" id="plus-ico"> </i> </button>
+                            <input type="number" id="amount" value="1" min="1">  </input>
+                            <button class="quantity-minus"id="minus">  <i class="fas fa-minus" id="minus-ico"> </i> </button>
+                        </div>
+
+
+                        <div class="caract-content-dc">
+                        <p class="caract-content-dc-title">Características:</p>
+                        
+                        <div class="caract-content-dc-item">
+                            <p class="carac-item">Peso:</p>
+                            <p class="carac-item-detail"><%- producto.weight %> g </p>
+                        </div>
+                        
+                        <div class="caract-content-dc-item">
+                            <p class="carac-item">Tamaño: </p>
+                            <p class="carac-item-detail"> <%- producto.size %> cm3 </p>
+                        </div>
+
+                        <div class="caract-content-dc-item">
+                            <p class="carac-item">Garantia: </p>
+                            <p class="carac-item-detail"><%- producto.warranty %> año</p>
+                        </div>
+                        
+                        </div>
+                        
+                        
+                    </div>
+                    
+                </div> 
+                
+                <div class="desc-content-dc">
+                <p class="desc-content-dc-title">Descripción:</p>
+                <p class="desc-content-dc-body"><%- producto.description %> </p>
+                </div>
+  
+
+            <!-- Logueado + Admin -->
+            <div class="botones">
+            <!--comprar-->
+            <button  class="boton-add add-card-btn"><i class="fas fa-shopping-cart" id="shop-ico"></i></button>
+            <% if(locals.isLogged && userLogged.admin == true) { %>
+                <button class="add-card-btn"> 
+                    <a  class="add-link" href="./<%- producto.id %>/edit">
+                        <i class="fas fa-sticky-note"></i>
+                    </a>                
+                </button>
+
+                <form action="/products/<%= producto.id %>/delete?_method=DELETE" method="POST">
+                    <!--eliminar-->
+                    <button type="submit" class="boton-formulario add-card-btn"><i class="fas fa-trash-alt"></i></button>
+                </form>
+                
+            <% } %>
+            
+            </div>
+
+
+            </article>
+
+        </section>
+
+
+
+        <div class="section-separador">
+            <p class="text-separador"> 
+                <i class="fas fa-tag"> </i>
+                Artículos similares
+            </p>
+            <hr class="hr-section">
+        </div>
+
+        <section class= "more-product">
+            <%for (producto of productosSimilares) {%>
+                
+                <div class="product-card">
+                    <img src="/images/products/<%-producto.avatar%>" alt="Bocina">
+                     <article>
+                         <div class="body-card">
+                             <p class="title-card"> <%-producto.name%></p>
+                             <p class="price-card"> u$s <%-producto.price%></p>
+                         </div>
+                         <p class="desc-card"> <%-producto.description%></p>
+                    </article>
+                    <div class="add-card">
+                        <button class="add-card-btn"> 
+                            <a href="./<%- producto.id %>" class="add-link">
+                                <i class="fas fa-plus"> </i>
+                                <p>Comprar</p>           
+                            </a>
+
+                     </button>
+
+   
+
+                     </div>
+                </div>
+
+                <% } %>
+
+
+
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <%- include('../partials/footer') %>
+
+
+    
+    
+</body>
+
+
+<!-- Scripts -->
+<script type="module" src="/js/base.js"></script>
+<script type="module" src="/js/agregar-producto.js"></script>
+
+</html>

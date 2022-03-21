@@ -1,0 +1,414 @@
+/* Reset CSS */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+}
+
+/* Variables */
+:root {
+  /* Colores */
+  --menu-color: rgb(113, 4, 157);
+  --footer-color: rgb(55, 53, 51);
+  --modal-secondary-color: rgba(55, 53, 51, 0.85);
+  --GrisOscuro: #666;
+  --GrisClaro: #ebebeb;
+  --Verde: #39b54a;
+
+  --font-color--dark-gray: rgb(55, 53, 51);
+
+  /* --font-color--dark: rgb(255, 255, 255); */
+  --font-color--dark: rgb(55, 53, 51);
+  --font-color--dark-destacado: rgb(100, 255, 255);
+
+  --red-color: rgb(235, 34, 34);
+
+  /* Variables */
+  --menu-mobile-height: 15vh;
+}
+
+body {
+  /* Esto permite el sticky footer */
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-image: url("/images/3880-gris-oscuro.jpg");
+  background-repeat: repeat;
+
+  color: white;
+  /* color:    rgb(55, 53, 51); */
+}
+
+/**************** Header *******************/
+
+/********* navbar ***********/
+nav hr {
+  /* general a cualquier navbar */
+  width: 90%;
+}
+
+/*** menu mobile ***/
+.menu-mobile {
+  list-style-type: none;
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  height: var(--menu-mobile-height);
+  width: 100vw;
+  background-color: honeydew;
+  align-items: center;
+  z-index: 999;
+}
+
+.item-mobile {
+  font-size: 2rem;
+  text-align: center;
+  padding: 5px;
+}
+.item-mobile a {
+  text-decoration: none;
+}
+
+.item-mobile .item-descripcion {
+  display: block !important;
+}
+
+/*** menu superior ***/
+.menu {
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  background-color: var(--menu-color);
+  height: 8vh;
+  font-size: 1.2rem;
+  align-items: center;
+}
+
+.item {
+  margin-top: 5px;
+  width: 100%;
+  text-align: center;
+  flex-grow: 0;
+}
+
+/* search */
+.item-search {
+  flex-grow: 12;
+  /* display: block !important; */
+}
+
+.searchContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-radius: 5px;
+  background-color: white;
+  font-size: 1.2rem;
+  width: 40%vw;
+  margin-right: 5px;
+}
+
+.fa-search {
+  padding: 1px;
+  margin-right: 2px;
+  font-size: 1.2rem;
+}
+
+.btn-search {
+  background-color: var(--menu-color);
+  color: var(--font-color--dark);
+  font-size: 1.2rem;
+  border-radius: 5px;
+  flex-grow: 1;
+}
+
+.searchContainer input {
+  border: 0;
+  border-radius: 5px;
+  flex-grow: 2;
+  font-size: 1.2rem;
+}
+
+/* end search */
+
+.item-desktop {
+  display: none;
+}
+
+.item a {
+  text-decoration: none;
+  color: var(--font-color--dark);
+}
+
+.item span {
+  display: block;
+}
+
+.item-descripcion {
+  display: none !important; /* sin !important, tiene mas peso el selector .item span {...} */
+}
+
+.logo {
+  width: 25px;
+  height: auto;
+}
+
+/************ Menu lateral Fullscreen ************/
+.panel-categorias {
+  /*
+    Haciendo position : fixed y seteando top bottom left right ESTIRO el panel, ocupando .
+    incluso header y footer. 
+    - sin declarar position, y haciendo height : 100vh, width:100vw no cubro header y footer. 
+    width: 100vw;
+    height: 100vh; 
+    */
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 998;
+  background-color: var(--modal-secondary-color);
+  transition: transform 0.3s ease;
+  transform: translate(0, -100%);
+}
+
+.panel-categorias.is-active {
+  transform: translate(0, 0);
+}
+
+.menu-categorias {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  text-align: center;
+}
+
+.categoria {
+  color: white;
+  width: 100%;
+  padding: 1.2rem;
+  text-decoration: none;
+  transition: all 0.4s ease;
+}
+
+.menu-categorias a:hover {
+  background-color: var(--menu-color);
+}
+
+/**************************** Main ************************************/
+.section-separador {
+  /* background-color: gray; */
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  margin-bottom: 10px;
+}
+
+.text-separador {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 5%;
+  font-size: 1.5rem;
+  opacity: 0.5;
+}
+
+.text-bienvenido {
+  color: rgb(207, 198, 198);
+  font-size: 1.5rem;
+  display: flex;
+  justify-content: center;
+}
+
+.section-separador i {
+  margin-right: 5px;
+}
+
+.hr-section {
+  color: var(--font-color--dark);
+  width: 100%;
+  margin-left: 5px;
+  margin-right: 5%;
+  height: 2px;
+  opacity: 0.5;
+  /* border:2px; */
+}
+
+.presentacion {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.botones {
+  display: flex;
+  /* justify-content: space-between; */
+  flex-direction: column;
+}
+
+.botones form {
+  display: flex;
+  flex-direction: column;
+}
+/*************************** Footer **************************/
+footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 5px;
+  padding-bottom: var(--menu-mobile-height); /* Es la medida del menu-mobile*/
+  order: 1;
+  background-color: var(--footer-color);
+  color: white;
+  margin-top: auto;
+}
+
+.sec-items {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: 10px;
+  width: 100%;
+}
+
+.sec-items article {
+  width: 100%;
+  border-bottom: 1px solid turquoise;
+  margin-bottom: 10px;
+}
+
+.sec-items article ul li {
+  list-style: none;
+  margin-bottom: 5px;
+}
+
+.sec-items article ul li a {
+  text-decoration: none;
+  color: white;
+  text-align: start;
+  padding: 5px;
+  font-size: 1.2rem;
+}
+
+.add-link {
+  text-decoration: none;
+  color: var(--font-color--dark-gray);
+}
+
+.baja-newsletter {
+  width: 50%;
+  border-radius: 5px;
+  background-color: rgb(247, 44, 44);
+  /* background-image: url('/images/3880-gris-oscuro.jpg'); */
+  color: white;
+  font-size: 1.2rem;
+}
+
+.redes {
+  display: flex;
+  justify-content: space-evenly;
+  list-style: none;
+}
+
+.redes li {
+  margin: auto 10px;
+}
+
+.redes li a i {
+  font-size: 2.5rem;
+}
+
+footer article h3 {
+  margin-bottom: 10px;
+}
+
+.copyright {
+  margin: 5px auto;
+}
+
+#amount {
+  text-align: center;
+  font-size: 1.2rem;
+  color: white;
+  background-color: rgb(55, 53, 51);
+  opacity: 0.7;
+}
+/******* tablets   ***************/
+@media (min-width: 600px) {
+  /******************** header *********************/
+  .menu-mobile {
+    display: none;
+  }
+
+  .item-desktop {
+    display: inline;
+  }
+
+  .item span {
+    display: block;
+  }
+  .item-descripcion {
+    display: inline !important;
+  }
+
+  .logo {
+    width: 45px;
+    height: auto;
+  }
+
+  /******************** main *********************/
+
+  .botones {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+  }
+
+  /******************** footer *********************/
+  footer {
+    padding-bottom: 5px;
+  }
+
+  .sec-items {
+    flex-direction: row;
+  }
+
+  footer .sec-items article {
+    border: none;
+  }
+
+  .baja-newsletter {
+    width: 75%;
+  }
+}
+
+/******* Desktop  ***************/
+@media (min-width: 961px) {
+  /******************** header *********************/
+  .item span {
+    display: inline;
+  }
+  .item-descripcion {
+    display: inline !important;
+  }
+
+  .logo {
+    width: 50px;
+    height: auto;
+  }
+
+  /******************** main *********************/
+
+  /******************** footer *********************/
+}

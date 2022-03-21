@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- font awesone -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+
+        <!-- Google font (Roboto) -->
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    
+        <!-- CSS -->
+        <link rel="stylesheet" href="/css/styles.css">
+        <link rel="stylesheet" href="/css/styles_FormProductoNuevo.css">
+
+    <title>Formulario Producto Nuevo</title>
+</head>
+<body>
+    <header>
+       <!-- Navbar -->
+       <%- include('../partials/navbar')%>
+    </header>
+  
+    <main>
+
+        <% if ( typeof (estado) !== 'undefined' && estado== true) { %>
+                <h4> Carga de producto realizada con exito</h4>
+            <% } %>
+        <div class="title-form">
+            <p> Formulario de Edicion de Producto</p>    
+        </div>
+
+        <%if (errors) {%>
+            <p> Hubo errores al intentar dar de editar producto.</p> 
+            <% for (error in errors)  {%>
+                <p>   <%- errors[error].msg %></p> 
+            <%}%>
+        <%}%>
+ 
+        <form action="./edit?_method=PUT" method="POST" enctype="multipart/form-data">  
+            <fieldset> 
+                <legend>Nombre del Producto:</legend> 
+                <p class = "nombre-help"> minimo 5 caracteres</p>
+                <div class="field-container">
+                    <input type="text" id="nombreProducto" name="nombreProducto" value="<%- producto.name %>" >
+                </div>
+            </fieldset>
+
+            <fieldset> 
+               <legend>Descripcion del Producto:</legend> 
+               <p class = "descripcion-help"> minimo 20 caracteres</p>
+                <div class="field-container">
+                    <input type="text" id="descripcionProducto" name="descripcionProducto" value="<%-producto.description %>" >
+                </div>
+            </fieldset>
+        
+    
+            
+            <fieldset> 
+                <legend>Categoria:</legend>    
+                <div class="field-container">
+                    <select name="categoriaProducto" id="categoriaProducto">
+                        <% for( categoria of categorias ){%>
+                        
+                            <option value=<%- categoria.id%> > <%- categoria.name%> </option>
+                        
+                        <% } %>
+                        </select>
+                </div class="field-container">
+            </fieldset>
+            
+            <fieldset> 
+                <legend>Mas detalles:</legend>    
+                <div class="field-container">
+
+                    <input type="text" name="detallesProducto" id="detalleProducto" value="<%- producto.description %>" >
+                </div class="field-container">
+            </fieldset>
+
+            <fieldset> 
+                <legend>Precio:</legend> 
+                <div class="field-container">
+                    <input type="text" name="precioProducto" id="precioProducto" value="<%- producto.price %>" >
+               </div>
+            </fieldset>
+
+            <fieldset> 
+                <legend>Descuento:</legend> 
+                <div class="field-container">
+                    <input type="text" name="descuentoProducto" id="descuentoProducto" value="<%- producto.discount %>" > 
+               </div>
+            </fieldset>
+            
+            <fieldset> 
+                <legend>Habilitado:</legend> 
+                <div class="field-container">
+                    <input type="checkbox" name="habilitadoProducto" id="habilitadoProducto" <% if (producto.enabled) {%> checked <% }  %>  >
+               </div>
+            </fieldset>
+
+            <fieldset> 
+                <legend>Tamaño:</legend> 
+                <div class="field-container">
+                    <input type="number" name="tamanoProducto" id="tamanoProducto" value="<%- producto.size %>" >
+               </div>
+            </fieldset>
+
+            <fieldset> 
+                <legend>Peso:</legend> 
+                <div class="field-container">
+                    <input type="number" name="pesoProducto" id="pesoProducto" value="<%- producto.weight %>" >
+               </div>
+            </fieldset>
+            
+            <fieldset> 
+                <legend>Garantia:</legend> 
+                <div class="field-container">
+                    <input type="number" name="garantiaProducto" id="garantiaProducto" value="<%-producto.warranty%>" >
+                </div>
+            </fieldset>
+            
+            
+            <fieldset> 
+                <legend>Inserte Imagen:</legend>
+                <p class = "imagen-help"> Formatos permitidos: JPG, JPEG, PNG, GIF</p>        
+                <div class="field-container">
+                   <input type="file" name="imagenProducto" id="imagenProducto" value="<%-producto.avatar%>" >
+                </div>
+            </fieldset>
+            
+            
+            <input type="submit" value="Agregar Producto">
+     <input type="reset" value="Limpiar Formulario">
+       
+     
+        </form>
+    </main>
+
+    <%- include('../partials/footer') %>
+ 
+</body>
+
+
+<!-- Scripts -->
+<script type="module" src="/js/base.js"></script>
+<!-- Validaciones -->
+<script src="https://unpkg.com/validator@latest/validator.min.js"></script>
+<script>
+     
+     let inputs = document.querySelectorAll('input')
+
+    for (let input of inputs) {
+        input.addEventListener('input',validar)
+    }
+
+    function validar (e){
+    if (e.srcElement.id === 'nombreProducto'){ validarNombre(e)} 
+    if (e.srcElement.id === 'descripcionProducto'){ validarDescripcion(e)}
+    if (e.srcElement.id === 'imagenProducto'){ validarImagenProducto(e)}
+
+    }
+
+    function validarNombre(e){
+    let nombreHelp = document.querySelector('.nombre-help')
+    
+    if (validator.isLength( e.srcElement.value, { min:5 }))
+    {
+        nombreHelp.style.visibility = 'hidden';
+        e.target.setCustomValidity('');
+    }
+    else {
+            nombreHelp.style.visibility = 'visible';
+            e.target.setCustomValidity('invalid');
+        
+        }
+    }
+
+    function validarDescripcion(e){
+    let descripcionHelp = document.querySelector('.descripcion-help')
+    
+    if (validator.isLength( e.srcElement.value, { min:20 }))
+    {
+        descripcionHelp.style.visibility = 'hidden';
+        e.target.setCustomValidity('');
+    }
+    else {
+        descripcionHelp.style.visibility = 'visible';
+            e.target.setCustomValidity('invalid');
+        
+        }
+    }
+
+
+
+
+function validarImagenProducto(e){
+    let passwordHelp = document.querySelector('.imagen-help')
+    let filename = e.target.value;
+    let formatos = ['jpeg', '.jpg', '.png', '.gif']
+    let extension =filename.substr(filename.length - 4, filename.length) 
+    let validacion = false
+    for (let j = 0; j < formatos.length; j++) {
+        if (extension.toLowerCase() == formatos[j].toLowerCase()) {
+            validacion = true;
+            break;
+        }
+    }
+    if (validacion)
+    {
+        passwordHelp.style.visibility = 'hidden';
+        e.target.setCustomValidity('');
+    }
+    else {
+            passwordHelp.style.visibility = 'visible';
+            e.target.setCustomValidity('invalid');
+        
+    }
+}
+
+</script>
+
+
+</html>
+
+
+
+
+

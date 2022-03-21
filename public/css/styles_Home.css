@@ -1,0 +1,312 @@
+
+/* Variables */
+:root {
+    /* Colores */
+
+    /* Dark Mode */
+    --menu-color: rgb(17, 238, 238);
+    --footer-color: rgb(55, 53, 51);
+    --modal-secondary-color: rgba(55, 53, 51, 0.85);
+    
+    --font-color--dark-gray: rgb(55, 53, 51);
+    --font-color--dark: rgba(55, 53, 51, 0.89);
+    --font-color--dark-destacado: rgb(17, 238, 238);
+
+    --GrisOscuro: #666;
+    --GrisClaro: #ebebeb;
+    --Verde: #39b54a;
+
+
+    --red-color: rgb(235, 34, 34);
+    --white-color:#FFF;
+
+
+    /* Variables */
+    --menu-mobile-height : 15vh;
+  }
+
+
+
+main{
+width: 90%;
+margin: auto;
+}
+
+.carousel-container {
+    width:90vw;
+    height: 30vh;
+    margin: 10px auto;
+    position: relative;
+    
+  }
+
+
+
+  /* Imagenes carousel escondida por defecto */
+.mySlides {
+    width:90vw;
+    height: 30vh;
+    margin: auto;
+    display: none;
+    background-color:rgba(0, 0, 0, 0.65);
+    border-radius: 20px;
+    text-align: center;
+  }
+
+.mySlides img{
+    max-height: 85%;
+}
+
+  /* animacion*/
+.fade {
+    -webkit-animation-name: fade;
+    -webkit-animation-duration: 2s;
+    animation-name: fade;
+    animation-duration:2s;
+    animation-direction: alternate;
+}
+  
+  @-webkit-keyframes fade {
+    from {opacity: .4}
+    to {opacity: 1}
+  }
+  
+  @keyframes fade {
+    from {opacity: .4}
+    to {opacity: 1}
+  }
+
+
+.prev, .next {
+position: absolute;
+top: 50%;
+width: auto;
+margin-top: -20px;
+padding: 20px;
+cursor: pointer;
+color: white;
+font-size: 15px;
+/* font-weight: bold; */
+transition: 0.5s ease;
+border-radius: 0 5px 5px 0;
+/* user-select: none; */
+}
+
+
+/* "next button" a la derecha */
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+  }
+
+
+.prev:hover, .next:hover {
+background-color: rgba(0,0,0,0.8);
+}
+
+/* Caption text */
+.title-slide{
+    color: var(--menu-color);
+    font-size: 18px;
+    padding: 8px; 
+    position: absolute;
+    bottom: 2px;
+    width: 100%;
+    text-align: center;
+  }
+
+
+/* puntos indicadores */
+.dot {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+  }
+  
+  .active, .dot:hover {
+    background-color: #717171;
+  }
+
+
+
+.discount, .destacados{
+    display: flex;  
+    flex-wrap: wrap;  
+    justify-content: center;
+    margin: auto;
+}
+
+.product-card{
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    border: 3px solid;
+    border-color: rgba(100, 100, 100, 0.7);
+    border-radius: 5px;
+    margin: 20px 5px;
+    transition: transform 0.7s ease;
+    /* border-width: 5px; */
+}
+
+
+.product-card:hover{
+    transform: scale(1.05);
+}
+
+
+.product-card img{
+    width: 100%;
+    height: auto;
+}
+
+.product-card article{
+    display: flex;
+    flex-direction: column;
+    
+    text-align: center;
+}
+
+.body-card{
+display: flex;
+justify-content: space-between;
+margin-bottom: 10px;
+}
+
+.title-card{
+    font-size: 1.4rem;
+    margin-left: 5px;
+}
+
+.price-card{
+    font-size: 1.4rem;
+    margin-right: 5px;
+}
+
+.desc-card{
+    font-size:1.2rem;
+    text-align: center;
+    padding: 5px;
+}
+
+
+.add-card{
+    width:60%;
+    margin-top: auto;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.add-card-btn{
+    font-size: 1.5rem;
+    background-color: var(--menu-color);
+    border-radius: 20px;
+    color: var(--font-color--dark-gray);
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.add-card-btn p{
+    display: none;
+}
+
+
+
+
+
+
+
+
+.newsletter{
+    width:100vw;
+    background-color: var(--menu-color);
+    color: var(--font-color--dark);
+    margin-bottom: 10px;
+}
+
+.newsletter p{
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    margin-left: 10px;
+}
+
+.form-newsletter{
+    display: flex;
+    flex-direction: column;
+    padding-left: 15px;
+    justify-content: start;
+    padding-bottom: 10px;
+    margin-bottom: 25px;
+   
+}
+
+.form-newsletter label{
+    font-size: 1.5rem;
+}
+
+.form-newsletter input{
+    font-size: 1.5rem;
+    width:90%;
+    /* margin:auto; */
+    /* background-color: transparent; */
+    background-image: url("/images/3880-gris-oscuro.jpg") ;
+    color: var(--white-color);
+    margin-left: 10px;
+    }
+
+input:invalid {
+    border: 2px solid red;
+    border-radius: 5px;
+  }
+
+
+/* Fin parte central */
+
+
+
+/***************************** MEDIA QUERIES *****************************/
+
+/******* tablets   ***************/
+@media (min-width:600px){
+/******************** header *********************/
+/******************** main *********************/
+.product-card{
+    width: 40%;
+}
+
+
+.add-card-btn p{
+   display: inline;
+}
+/******************** footer *********************/
+
+}
+
+/******* Desktop   ***************/
+
+@media (min-width:961px){
+/******************** header *********************/
+/******************** main *********************/
+.product-card{
+    width: 22%;
+}
+
+.newsletter{
+    padding-left:20px;
+    padding-right: 10px;
+}
+.form-newsletter{
+    flex-direction: row;
+}
+.form-newsletter input{
+    width: 40%;
+}
+/******************** footer *********************/
+
+}

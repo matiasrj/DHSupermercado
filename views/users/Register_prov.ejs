@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- font awesone -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+
+        <!-- Google font (Roboto) -->
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    
+        <!-- CSS -->
+        <link rel="stylesheet" href="/css/styles.css">
+        <link rel="stylesheet" href="/css/styles_Register_prov.css">
+
+    <title>DigiMart Register</title>
+</head>
+<body>
+    <header>
+       <!-- Navbar -->
+       <%- include('../partials/navbar')%>
+       
+    </header>
+  
+    <main>
+
+        
+        <div class="title-form">
+            <p> Formulario de Registro</p>    
+        </div>
+        <%if (errors) {%>
+            <p> Hubo errores al intentar dar de alta los campos.</p> 
+            <% for (error in errors)  {%>
+                <p>   <%- errors[error].msg %></p> 
+            <%}%>
+        <%}%>
+
+        <form  action="./" method="POST" enctype="multipart/form-data"> 
+            <fieldset> 
+                <legend>Nombre y Apellido</legend> 
+                <p class = "nombre-help"> minimo 2 caracteres</p>
+                <div class="field-container">
+                    <i class="fas fa-user">   </i> 
+                    <input type="text" id="NombreApellido" name="nombreApe">
+                </div>
+                
+                <p class = "nombre-error"></p>
+            </fieldset>
+
+            <fieldset> 
+            <legend>Nombre de Usuario:</legend> 
+                <div class="field-container">
+                    <i class="fas fa-user-tag">   </i>
+                    <input type="text"id="Nombre de usuario" name="nombreUsuario">
+                </div>
+                
+                <p class = "username-error"></p>
+            </fieldset>
+        
+
+
+            <fieldset> 
+               <legend>Fecha de Nacimiento:</legend> 
+                <div class="field-container">
+                    <i class="fas fa-calendar">   </i> 
+                    <input type="text"id="Fecha de Nacimiento" name="fechaNac">
+                </div>
+                
+                <p class = "fecha-error"></p>
+            </fieldset>
+        
+    
+            <fieldset> 
+                <legend>Domicilio:</legend>    
+                <div class="field-container">
+                    <i class="fas fa-map-marker">   </i> 
+                    <input type="text"id="Domicilio" name="Address">
+                </div>
+                
+                <p class = "domicilio-error"></p>
+            </fieldset>
+
+            <fieldset> 
+                <legend>Email:</legend>    
+                <p class = "email-help"> Ingrese mail valido. Por ej : pepito@gmail.com</p>
+                <div class="field-container">
+                    <i class="fas fa-envelope">   </i> 
+                    <input type="email" name="email" id="email">
+                </div class="field-container">
+                
+                <p class = "email-error"></p>
+            </fieldset>
+    
+            <fieldset> 
+                <legend>Contraseña:</legend>
+                <p class = "password-help"> Minimo 8 caracteres</p>    
+                <div class="field-container">
+                    <i class="fas fa-lock">   </i> 
+                    <input type="password" name="password" id="password">
+                </div class="field-container">
+                
+                <p class = "password-error"></p>
+            </fieldset>
+
+            <fieldset> 
+                <legend>Confirmar Contraseña:</legend> 
+                <div class="field-container">
+                    <i class="fas fa-lock">   </i> 
+                    <input type="password" name="passwordConfirm" id="Password_Confirmation">
+               </div>
+               
+               <p class = "passwordConfirm-error"></p>
+            </fieldset>
+
+            <fieldset> 
+                <legend>Imagen de Perfil:</legend>
+                <p class = "imagen-help"> Formatos permitidos: JPG, JPEG, PNG, GIF</p>    
+                <div class="field-container">
+                   <input type="file" name="imagenPerfil" id="imagenPerfil">
+                </div>
+                
+                <p class = "imagenPerfil-error"></p>
+            </fieldset>
+    
+         <h8>Al crear una cuenta, aceptas el Aviso de Privacidad, los Términos y Condiciones, así como el envío de noticias y promociones exclusivas. Puedes desactivar el envío de promociones desde el enlace incluido en cada correo.</h8> 
+
+     <input type="submit" value="Crear Cuenta">
+     <input type="reset" value="Limpiar">
+       
+     
+        </form>
+    </main>
+
+
+    <footer>
+        <section class="sec-items"> 
+            <article>
+                <ul>
+                    <li><a href="#/atencion-cliente">Atención al cliente</a> </li>
+                    <li><a href="#/preguntas-frecuentes">Preguntas Frecuentes</a> </li>
+                    <li><a href="#/locales"> Nuestros Locales</a> </li>
+                </ul>
+            </article>
+
+
+            <article>
+                <ul>
+                    <li> <button class="baja-newsletter"> Baja Newsletter</button></li>
+                    <li><a href="#/trabaja-nosotros">Trabajá con Nosotros</a> </li>
+                    <li><a href="#/terminos-condiciones">Términos y condiciones</a> </li>
+                </ul>
+            </article>
+
+
+            
+            <article>
+                <h3> Síguenos!</h3>
+                <ul class="redes">
+                    <li><a href="#/whatsapp"><i class="fab fa-whatsapp"></i>  </a> </li>
+                    <li><a href="#/facebook"><i class="fab fa-facebook"></i>  </a> </li>
+                    <li><a href="#/instagram"><i class="fab fa-instagram"></i> </a> </li>
+                </ul>
+            </article>
+
+        </section>
+
+        <article class="copyright">
+            Derechos reservados - 20XX
+        </article>
+
+    </footer>
+    
+ 
+</body>
+
+
+<!-- Scripts -->
+<script type="module" src="/js/base.js"></script>
+<!-- Validaciones -->
+<script src="https://unpkg.com/validator@latest/validator.min.js"></script>
+<script>
+     
+     let inputs = document.querySelectorAll('input')
+
+    for (let input of inputs) {
+        input.addEventListener('input',validar)
+    }
+
+    function validar (e){
+    if (e.srcElement.id === 'NombreApellido'){ validarNombreApellido(e)} 
+    if (e.srcElement.id === 'email'){ validarEmail(e)}
+    if (e.srcElement.id === 'password'){ validarPassword(e)}
+    if (e.srcElement.id === 'imagenPerfil'){ validarImagenPerfil(e)}
+
+    }
+
+    function validarNombreApellido(e){
+    let nombreHelp = document.querySelector('.nombre-help')
+    
+    if (validator.isLength( e.srcElement.value, { min:2 }))
+    {
+        nombreHelp.style.visibility = 'hidden';
+        e.target.setCustomValidity('');
+    }
+    else {
+            nombreHelp.style.visibility = 'visible';
+            e.target.setCustomValidity('invalid');
+        
+        }
+    }
+
+    function validarEmail(e){
+    let emailHelp = document.querySelector('.email-help')
+    
+    if (validator.isEmail(e.srcElement.value) && !validator.isEmpty(e.srcElement.value))
+    {
+        emailHelp.style.visibility = 'hidden'
+        e.target.setCustomValidity('');
+    }
+    else {
+            emailHelp.style.visibility = 'visible'
+            e.target.setCustomValidity('invalid');
+    }
+}
+    
+function validarPassword(e){
+    let passwordHelp = document.querySelector('.password-help')
+    
+    if (validator.isLength( e.srcElement.value, { min:8 }))
+    {
+        passwordHelp.style.visibility = 'hidden';
+        e.target.setCustomValidity('');
+    }
+    else {
+            passwordHelp.style.visibility = 'visible';
+            e.target.setCustomValidity('invalid');
+        
+    }
+}
+
+
+function validarImagenPerfil(e){
+    let passwordHelp = document.querySelector('.imagen-help')
+    let filename = e.target.value;
+    let formatos = ['jpeg', '.jpg', '.png', '.gif']
+    let extension =filename.substr(filename.length - 4, filename.length) 
+    let validacion = false
+    for (let j = 0; j < formatos.length; j++) {
+        if (extension.toLowerCase() == formatos[j].toLowerCase()) {
+            validacion = true;
+            break;
+        }
+    }
+    if (validacion)
+    {
+        passwordHelp.style.visibility = 'hidden';
+        e.target.setCustomValidity('');
+    }
+    else {
+            passwordHelp.style.visibility = 'visible';
+            e.target.setCustomValidity('invalid');
+        
+    }
+}
+
+</script>
+
+</html>
+
+
+
+
+
+

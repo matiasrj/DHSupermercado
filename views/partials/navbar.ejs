@@ -1,0 +1,110 @@
+<nav>
+    <ul class="menu-mobile">            
+        <li class="item-mobile">  
+            <a href="#"> 
+                <span class="activar-menu"> <i class="fas fa-bars activar-menu">   </i>  </span> 
+                <!-- <span class="item-descripcion">   Menú</span>          -->
+            </a> 
+        </li>
+        <li class="item-mobile"> 
+            <a href="/products/carrito">
+                <span><i class="fas fa-shopping-cart">  </i> </span> 
+                <!-- <span class="item-descripcion"> Carrito</span>   -->
+            </a> 
+        
+        <% if (locals.isLogged) { %>
+
+            <li class="item-mobile">
+                <a href="/users/logout">
+                    <span> <i class="fas fa-user"> </i> </span>
+                </a>  
+            </li>
+            
+            <% } else { %>
+                
+                <li class="item-mobile">
+                    <a href="/users/login">
+                        <span> <i class="fas fa-user"> </i> </span>  
+                    </a>  
+                </li>
+
+        <% } %>
+
+
+
+    </ul>
+</nav>
+
+<nav>
+    <ul class="menu">            
+        <li class="item item-desktop">  
+            <a href="#"> 
+                <span class="activar-menu" ><i class="fas fa-bars activar-menu">   </i>  </span> 
+                <span class="item-descripcion activar-menu">   Menú</span>         
+            </a> 
+        </li>
+        <li class="item"> 
+            <img class="logo" src="/images/MART2.png" alt="Logo">  
+        </li>
+        <li class="item item-search"> 
+            <div class='searchContainer'>
+                <input type="search"  placeholder=" Buscar...">
+                <button type="submit" class="btn-search">
+                    <i class="fas fa-search" ></i> 
+                </button>                           
+            </div>
+            
+            <a>
+            </a>
+         
+        </li>
+        <li class="item item-desktop"> 
+            <a href="/products/carrito">
+                <span><i class="fas fa-shopping-cart">  </i> </span> 
+                <span class="item-descripcion"> Carrito</span>  
+            </a> 
+        </li>
+
+            <% if (locals.isLogged) { %>
+
+                <li class="item item-desktop">
+                    <a href="/users/logout">
+                        <span> <i class="fas fa-user"> </i> </span>
+                        <span class="item-descripcion">Cerrar Sesion</span>   
+                    </a>  
+                </li>
+                
+                <% } else { %>
+                    
+                    <li class="item item-desktop">
+                        <a href="/users/login">
+                            <span> <i class="fas fa-user"> </i> </span>
+                            <span class="item-descripcion"> Sesion</span>   
+                        </a>  
+                    </li>
+
+            <% } %>
+
+
+
+
+    </ul>
+</nav>
+
+<!-- menu mobile categorias -->
+<aside class="panel-categorias">
+    <nav class='menu-categorias'>
+        <a href="/" class='categoria'> <i class="fas fa-arrow-left"> </i>    Volver</a>
+        <hr>
+        <span class='categoria'>Categorias</span>
+        
+        <a href="#/cat1" class='categoria'>cat1</a>
+        <a href="#/cat2" class='categoria'>cat2</a>
+        <a href="#/cat3" class='categoria'>cat3</a>
+        <a href="#/cat4" class='categoria'>cat4</a>
+        <a href="#/cat5" class='categoria'>cat5</a>
+        <hr>
+        <a href="#/contacto" class='categoria'> <i class="fas fa-paper-plane"> </i>    Contacto</a>
+        
+    </nav>
+</aside>

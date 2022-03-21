@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- font awesone -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+
+    <!-- Google font (Roboto) -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/styles_Home.css">
+
+    <title>Ooops! </title>
+</head>
+<body>
+    <header>
+        <!-- Navbar -->
+        <%- include('partials/navbar')%>
+    
+    </header>
+
+    <main>
+        <h3> Ooops! No es una direcion válida</h3>
+        <p> Error 404! Prueba accediendo mediante los links de la barra de navegación-</p>
+    </main>
+    
+    <section class="newsletter">
+        <p><i class="far fa-smile-wink"></i>  Suscríbete a nuestras novedades:</p>
+
+        <form action="#" method="post" class="form-newsletter"> 
+            <label for="nombre-newsletter">Nombre:</label>
+            <input type="text" name="nombre-newsletter" id="nombre-newsletter">
+
+            <label for="email-newsletter">Email:</label>
+            <input type="email" name="email-newsletter" id="email-newsletter">
+        </form>
+
+
+    </section>
+
+
+<!-- Footer -->
+<%- include('partials/footer') %>
+    
+</body>
+
+<!-- Scripts -->
+<script type="module" src="js/base.js"></script>
+<script type="module" src="js/carousel-home.js"></script>
+
+
+</html>
