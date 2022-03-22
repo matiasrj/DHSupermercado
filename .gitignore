@@ -1,3 +1,4 @@
 node_modules/
-
+publiv/images/users/*
+publiv/images/products/*
 .env
