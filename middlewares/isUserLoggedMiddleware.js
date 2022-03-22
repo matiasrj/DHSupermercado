@@ -14,25 +14,24 @@ const isUserLoggedMiddleware  = async  (req, res, next) => {
     let userFromCookie = false
     if (typeof(emailCookie) != 'undefined'){
         console.log(typeof(emailCookie))
-        const userFromCookie = await db.User.findOne({where: {email:emailCookie}})
-        console.log(userFromCookie)
+        userFromCookie = await db.User.findOne({where: {email:emailCookie}})
+        
     }
     //Ahora lo tomo de BD
     // const usuarios = require ('../data/users.json');
     // const  userFromCookie =  usuarios.find (user => user.email === emailCookie);
-    if (userFromCookie) {
+    if (typeof(userFromCookie)!= 'undefined' && userFromCookie!= false) {
         let userAux = {};
         Object.assign (userAux, userFromCookie);
         userAux.password='';
-        console.log('Aqui en middleware: cooqie' + JSON.stringify(userAux))
+        console.log('Aqui en middleware: cookie \n\n' + JSON.stringify(userAux))
         req.session.userLogged= userAux;
-        console.log('User Cookie:' + JSON.stringify(req.session.userLogged));
     }
 
     }
 
     if(req.session.userLogged) {
-        console.log('User Session' + JSON.stringify(req.session.userLogged));
+        console.log('User Session          ' + JSON.stringify(req.session.userLogged));
         res.locals.isLogged =true;
     };
     next();
