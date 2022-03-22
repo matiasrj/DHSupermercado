@@ -203,6 +203,12 @@ nav hr {
   background-color: var(--menu-color);
 }
 
+#categorias {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
 /**************************** Main ************************************/
 .section-separador {
   /* background-color: gray; */
@@ -367,6 +373,11 @@ footer article h3 {
     height: auto;
   }
 
+  #categorias {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
   /******************** main *********************/
 
   .botones {

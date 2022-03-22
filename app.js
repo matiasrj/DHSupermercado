@@ -69,7 +69,7 @@ app.get('/', (req,res)=>{
 
 // Error 404
 app.use((req, res, next) => {
-    res.render(path.resolve(__dirname ,'./views/error404') );
+    res.render(path.resolve(__dirname ,'views/error404') );
     next();
     
 })

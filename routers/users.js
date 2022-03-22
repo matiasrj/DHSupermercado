@@ -66,7 +66,22 @@ const registerUserMiddleware = [
 
 ]
 
+const registerUpdateUserMiddleware = [
+    check('nombreApe').exists().withMessage('"Nombre y Apellido" es obligatorio').bail()
+    .isLength({ min: 2}).withMessage('tipo de dato "Nombre y Apellido" incorrecto'),
 
+    check('email').exists().withMessage('"email" es obligatorio').bail()
+    .isEmail().withMessage('"email" no valido').bail(),
+    
+    
+    check('password').exists().withMessage('"contraseña" es obligatorio').bail()
+    .isLength({ min: 8}).withMessage('"contraseña" debe tener longitud minima de 8 caracteres')
+    .custom(validatePasswordRegister),
+ 
+    check('imagenPerfil').custom( validateImage  ),
+   
+
+]
 
 router.get('/login',guestMiddleware, userController.login);
 router.post('/login',  [validateLogin ], userController.processLogin);
@@ -79,5 +94,8 @@ router.post('/register',[
                         registerUserMiddleware,
                         ], userController.processRegister);
 
+                        
+router.get('/:id/edit', [guestMiddleware] ,userController.editar);
+router.put('/:id/edit',[upload.single('imagenPerfil'),registerUpdateUserMiddleware] ,userController.actualizar);
 
 module.exports = router;

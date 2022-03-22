@@ -10,6 +10,9 @@ const db = require('../database/models');
 const productsController = {
 
     productos: async (req=request, res = response)=>{
+
+        let  categoria = req.query.categoria;
+        console.log('Categoria desde listar products ' + categoria)
         
         let userLogged = await req.session.userLogged
         if (userLogged == null){
@@ -18,7 +21,14 @@ const productsController = {
             userLogged.dataValues.admin=null
         }
 
-        let productos = await db.Product.findAll({where : { enabled : true} });
+        let productos= null
+        if (typeof(categoria)!= 'undefined'){
+            console.log('categoria es' + typeof(categoria));
+            productos = await db.Product.findAll({where : { enabled : true, idCategory:categoria} });
+        }
+        else {
+            productos = await db.Product.findAll({where : { enabled : true} });
+        }
         res.render( path.join( __dirname , '../views/products/products'), {productos : productos, userLogged: userLogged.dataValues,errors:null}  );
     },
 

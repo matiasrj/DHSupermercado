@@ -60,7 +60,7 @@
         <% if(locals.isLogged && userLogged.admin == true) { %>
             <div class="add-card">
                 <button class="add-card-btn"> 
-                    <a  class="add-link" href="./create">
+                    <a  class="add-link" href="/products/create">
                     <i class="fas fa-plus"> </i>
                     <p>Agregar Producto</p>
                     </a>                
@@ -86,7 +86,7 @@
                     </article>
                     <div class="add-card">
                         <button class="add-card-btn"> 
-                            <a  class="add-link" href="./<%- producto.id %>">
+                            <a  class="add-link" href="/products/<%- producto.id %>">
                             <i class="fas fa-plus"> </i>
                             <p>Comprar</p>
                             </a>                
@@ -111,6 +111,7 @@
 
 <!-- Scripts -->
 <script type="module" src="/js/base.js"></script>
+
 <script type="module" src="/js/carousel-home.js"></script>
 
 </html>

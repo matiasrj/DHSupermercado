@@ -36,13 +36,13 @@
             <%}%>
         <%}%>
 
-        <form  action="./register" method="POST" enctype="multipart/form-data"> 
+        <form  action="./edit?_method=PUT" method="POST" enctype="multipart/form-data"> 
             <fieldset> 
                 <legend>Nombre y Apellido</legend> 
                 <p class = "nombre-help"> minimo 2 caracteres</p>
                 <div class="field-container">
                     <i class="fas fa-user">   </i> 
-                    <input type="text" id="NombreApellido" name="nombreApe">
+                    <input type="text" id="NombreApellido" name="nombreApe" value="<%- usuario.lastName %>">
                 </div>
                 
                 <p class = "nombre-error"></p>
@@ -52,7 +52,7 @@
             <legend>Nombre de Usuario:</legend> 
                 <div class="field-container">
                     <i class="fas fa-user-tag">   </i>
-                    <input type="text"id="Nombre de usuario" name="nombreUsuario">
+                    <input type="text"id="Nombre de usuario" name="nombreUsuario" value="<%- usuario.firstName %>">
                 </div>
                 
                 <p class = "username-error"></p>
@@ -64,7 +64,7 @@
                <legend>Fecha de Nacimiento:</legend> 
                 <div class="field-container">
                     <i class="fas fa-calendar">   </i> 
-                    <input type="text"id="Fecha de Nacimiento" name="fechaNac">
+                    <input type="text"id="Fecha de Nacimiento" name="fechaNac" value="<%- usuario.fechaNac %>">
                 </div>
                 
                 <p class = "fecha-error"></p>
@@ -75,7 +75,7 @@
                 <legend>Domicilio:</legend>    
                 <div class="field-container">
                     <i class="fas fa-map-marker">   </i> 
-                    <input type="text"id="Domicilio" name="Address">
+                    <input type="text"id="Domicilio" name="Address" >
                 </div>
                 
                 <p class = "domicilio-error"></p>
@@ -86,7 +86,7 @@
                 <p class = "email-help"> Ingrese mail valido. Por ej : pepito@gmail.com</p>
                 <div class="field-container">
                     <i class="fas fa-envelope">   </i> 
-                    <input type="email" name="email" id="email">
+                    <input type="email" name="email" id="email" value="<%- usuario.email %>">
                 </div class="field-container">
                 
                 <p class = "email-error"></p>
@@ -125,7 +125,7 @@
     
          <h8>Al crear una cuenta, aceptas el Aviso de Privacidad, los Términos y Condiciones, así como el envío de noticias y promociones exclusivas. Puedes desactivar el envío de promociones desde el enlace incluido en cada correo.</h8> 
 
-     <input type="submit" value="Crear Cuenta">
+     <input type="submit" value="Editar Cuenta">
      <input type="reset" value="Limpiar">
        
      
